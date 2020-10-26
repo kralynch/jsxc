@@ -42,6 +42,8 @@ export default class NotificationPlugin extends AbstractPlugin {
             soundFile: SOUNDS.MSG,
             source: contact
          });
+         //open the chat window for all incoming messages
+         contact.getChatWindowController().openProminently();
       }
 
       return Promise.resolve([contact, message]);
