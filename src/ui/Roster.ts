@@ -1,7 +1,9 @@
 import showContactDialog from './dialogs/contact'
+/*
 import showAboutDialog from './dialogs/about'
 import showMultiUserJoinDialog from './dialogs/multiUserJoin'
 import showSettingsDialog from './dialogs/settings'
+*/
 import * as CONST from '../CONST'
 import RosterItem from './RosterItem'
 import Menu from './util/Menu'
@@ -19,7 +21,9 @@ let rosterTemplate = require('../../template/roster.hbs')
 
 const APPEND_KEY = 'rosterAppend';
 const VISIBILITY_KEY = 'rosterVisibility';
+/*
 const HELP_KEY = 'onlineHelp';
+*/
 const HIDE_OFFLINE_KEY = 'hideOfflineContacts';
 
 export default class Roster {
@@ -299,7 +303,7 @@ export default class Roster {
    }
 
    private addMainMenuEntries() {
-      this.addMenuEntry({
+/*      this.addMenuEntry({
          id: 'about',
          handler: showAboutDialog,
          label: Translation.t('About'),
@@ -318,7 +322,7 @@ export default class Roster {
             offlineAvailable: true,
             icon: 'help',
          });
-      }
+      }*/
 
       this.addMenuEntry({
          id: 'add-contact',
@@ -333,7 +337,7 @@ export default class Roster {
          label: $(`<span class="jsxc-hide-offline">${Translation.t('Hide_offline')}</span>
                    <span class="jsxc-show-offline">${Translation.t('Show_offline')}</span>`),
       });
-
+/*
       this.addMenuEntry({
          id: 'mute-notification',
          handler: this.toggleMuteNotification,
@@ -354,6 +358,7 @@ export default class Roster {
          offlineAvailable: true,
          icon: 'setting'
       });
+      */
    }
 
    private registerPresenceHandler() {
@@ -393,13 +398,13 @@ export default class Roster {
          this.element.removeClass('jsxc-hide-offline');
       }
    }
-
+/*
    private toggleMuteNotification = () => {
       let muteNotification = !Client.getOption('notification.mute');
 
       Client.setOption('notification.mute', muteNotification);
    }
-
+*/
    private muteNotification(yes: boolean) {
       let element = this.element.find('.jsxc-mute-notification');
 
