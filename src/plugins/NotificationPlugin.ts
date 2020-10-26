@@ -44,6 +44,9 @@ export default class NotificationPlugin extends AbstractPlugin {
          });
          //open the chat window for all incoming messages
          contact.getChatWindowController().openProminently();
+
+         //play notification sound
+         Notification.playSound(SOUNDS.MSG,false,true);
       }
 
       return Promise.resolve([contact, message]);
