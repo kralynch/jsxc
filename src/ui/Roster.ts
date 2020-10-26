@@ -375,7 +375,13 @@ export default class Roster {
             let onUserRequestsToGoOnline = Client.getOption('onUserRequestsToGoOnline');
 
             if (typeof onUserRequestsToGoOnline === 'function') {
-               onUserRequestsToGoOnline();
+               //remove login popup box
+               //onUserRequestsToGoOnline();
+
+               //auto login here
+               //start(localStorage.getItem('persistent_url'),
+               //localStorage.getItem('persistent_jid'),
+               //localStorage.getItem('persistent_password'));
             }
          }
       });
