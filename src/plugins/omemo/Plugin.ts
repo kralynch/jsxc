@@ -63,7 +63,8 @@ export default class OMEMOPlugin extends EncryptionPlugin {
             return;
          }
 
-         chatWindow.addMenuEntry('omemo-devices', 'OMEMO devices', () => this.openDeviceDialog(chatWindow));
+         //disable unused menu item
+         //chatWindow.addMenuEntry('omemo-devices', 'OMEMO devices', () => this.openDeviceDialog(chatWindow));
       });
    }
 

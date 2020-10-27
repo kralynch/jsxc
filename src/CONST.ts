@@ -15,7 +15,7 @@ export let REGEX = {
    JID: new RegExp('\\b[^"&\'\\/:<>@\\s]+@[\\w-_.]+\\b', 'ig'),
    //modify url to ignore custom markdown
    //URL: new RegExp(/(aesgcm:\/\/|https?:\/\/|www\.)[^\s<>'"]+/gi),
-   URL: new RegExp(/(?<!\]{1}\]{1}\-{1}\({1}\({1})(https?:\/\/)[^\s<>'"]+/gi),
+   URL: new RegExp(/(?!\S*\){2})https?:\/\/[^\s<>'"]+/gi),
    GEOURI: new RegExp(/geo:(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)(?:,-?\d+(?:\.\d+)?)?(?:;crs=[\w-]+)?(?:;u=(\d+(?:\.\d+)?))?(?:;[\w-]+=(?:[\w-_.!~*'()]|%[\da-f][\da-f])+)*/, 'g'),
 };
 export let NS = {

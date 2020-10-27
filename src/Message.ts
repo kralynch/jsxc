@@ -366,7 +366,7 @@ function convertUrlToLink(text: string) {
 
 function convertCustomUrlToLink(text: string) {
    //detect format [[Link Text]]-((http://some.url)) and encode in link
-   let customRegex = new RegExp('\\[{1}.+\\]{1}\\-{1}\\({1}.+\\){1}', 'i');
+   let customRegex = new RegExp('\\[{2}.+\\]{2}\\-{1}\\({2}.+\\){2}', 'i');
 
    return text.replace(customRegex, function(url) {
 
