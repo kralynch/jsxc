@@ -472,5 +472,8 @@ export default class Roster {
       Client.getPresenceController().registerCurrentPresenceHook(() => {
          this.refreshOwnPresenceIndicator();
       });
+
+      //hide the roster on initialization
+      this.hide();
    }
 }
