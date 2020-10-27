@@ -73,12 +73,15 @@ export default class OTRPlugin extends EncryptionPlugin {
             return;
          }
 
+         //remove unused menu item
+         /*
          let menuEntry = chatWindow.addMenuEntry('otr-verification', 'OTR ' + Translation.t('Verification'), () => this.openVerificationDialog(contact));
          this.updateMenuEntry(contact, menuEntry);
 
          contact.registerHook('encryptionState', () => {
             this.updateMenuEntry(contact, menuEntry);
          })
+         */
       });
 
       pluginAPI.registerTextFormatter(this.textFormatter);
@@ -105,6 +108,8 @@ export default class OTRPlugin extends EncryptionPlugin {
       return plaintext;
    }
 
+   //disable unused menu items
+   /*
    private updateMenuEntry(contact: IContact, menuEntry: JQuery) {
       if (contact.isEncrypted() && contact.getEncryptionPluginId() === OTRPlugin.getId()) {
          menuEntry.removeClass('jsxc-disabled');
@@ -112,6 +117,7 @@ export default class OTRPlugin extends EncryptionPlugin {
          menuEntry.addClass('jsxc-disabled');
       }
    }
+   */
 
    private afterReceiveMessageProcessor = (contact: Contact, message: Message, stanza: Element): Promise<[Contact, Message, Element]> => {
       let plaintextMessage = message.getPlaintextMessage();

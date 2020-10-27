@@ -7,17 +7,17 @@ import Client from '../Client'
 import Account from '../Account'
 import Emoticons from '../Emoticons'
 import AvatarSet from './AvatarSet'
-import { startCall } from './actions/call'
+//import { startCall } from './actions/call'
 import { Presence } from '../connection/AbstractConnection'
-import { EncryptionState } from '../plugin/AbstractPlugin'
+//import { EncryptionState } from '../plugin/AbstractPlugin'
 import ElementHandler from './util/ElementHandler'
 import ChatWindowMessage from './ChatWindowMessage'
 import Transcript from '../Transcript'
 import FileTransferHandler from './ChatWindowFileTransferHandler'
 import Attachment from '../Attachment'
 import { IJID } from '@src/JID.interface';
-import { JINGLE_FEATURES } from '@src/JingleAbstractSession';
-import Location from '@util/Location';
+//import { JINGLE_FEATURES } from '@src/JingleAbstractSession';
+//import Location from '@util/Location';
 import interact from 'interactjs';
 
 let chatWindowTemplate = require('../../template/chatWindow.hbs');
@@ -48,7 +48,7 @@ export default class ChatWindow {
 
    private settingsMenu: Menu;
 
-   private encryptionMenu: Menu;
+   //private encryptionMenu: Menu;
 
    constructor(protected contact: Contact) {
       let template = chatWindowTemplate({
@@ -61,7 +61,7 @@ export default class ChatWindow {
 
       Menu.init(this.element.find('.jsxc-menu'));
       this.settingsMenu = this.element.find('.jsxc-menu-settings').data('object');
-      this.encryptionMenu = this.element.find('.jsxc-menu.jsxc-transfer').data('object');
+      //this.encryptionMenu = this.element.find('.jsxc-menu.jsxc-transfer').data('object');
 
       this.initResizableWindow();
       this.initEmoticonMenu();
@@ -77,7 +77,7 @@ export default class ChatWindow {
       let avatar = AvatarSet.get(contact);
       avatar.addElement(this.element.find('.jsxc-bar--window .jsxc-avatar'));
 
-      this.initEncryptionIcon();
+   //   this.initEncryptionIcon();
       this.registerHooks();
 
       this.element.attr('data-presence', Presence[this.contact.getPresence()]);
@@ -306,6 +306,8 @@ export default class ChatWindow {
          }
       );
 
+      //remove unnecessary menu options
+      /*
       if (this.contact.isChat()) {
          elementHandler.add(
             this.element.find('.jsxc-video')[0],
@@ -347,7 +349,7 @@ export default class ChatWindow {
             });
          }
       );
-
+   */
       elementHandler.add(
          this.element.find('.jsxc-message-area')[0],
          function() {
@@ -480,6 +482,7 @@ export default class ChatWindow {
       }
    }
 
+   /*
    private updateEncryptionState = (encryptionState) => {
       Log.debug('update window encryption state to ' + EncryptionState[encryptionState]);
 
@@ -503,6 +506,7 @@ export default class ChatWindow {
             Log.warn('Unknown encryption state');
       }
    }
+   */
 
    private resizeInputArea() {
       let inputElement = this.inputElement;
@@ -615,7 +619,7 @@ export default class ChatWindow {
    }
 
    private registerHooks() {
-      this.contact.registerHook('encryptionState', this.updateEncryptionState);
+      //this.contact.registerHook('encryptionState', this.updateEncryptionState);
 
       this.contact.registerHook('presence', (newPresence) => {
          this.element.attr('data-presence', Presence[newPresence]);
@@ -640,6 +644,7 @@ export default class ChatWindow {
       });
    }
 
+   /*
    private initEncryptionIcon() {
       this.updateEncryptionState(this.contact.getEncryptionState());
 
@@ -690,4 +695,5 @@ export default class ChatWindow {
          menuElement.removeClass('jsxc-disabled');
       }
    }
+   */
 }

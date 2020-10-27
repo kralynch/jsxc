@@ -1,13 +1,13 @@
-import Menu from './util/Menu'
+//import Menu from './util/Menu'
 import AvatarSet from './AvatarSet'
-import confirmDialog from './dialogs/confirm'
-import showVcardDialog from './dialogs/vcard'
+//import confirmDialog from './dialogs/confirm'
+//import showVcardDialog from './dialogs/vcard'
 import { Presence } from '../connection/AbstractConnection'
-import Dialog from './Dialog'
+//import Dialog from './Dialog'
 import { IContact } from '../Contact.interface'
-import Translation from '../util/Translation'
+//import Translation from '../util/Translation'
 import Client from '@src/Client';
-import Log from '@util/Log'
+//import Log from '@util/Log'
 
 let rosterItemTemplate = require('../../template/roster-item.hbs')
 
@@ -15,7 +15,8 @@ export default class RosterItem {
    private element: JQuery;
 
    constructor(private contact: IContact) {
-      let self = this;
+      //remove unused features
+      //let self = this;
       let template = rosterItemTemplate({
          jid: contact.getJid().bare,
          name: contact.getName(),
@@ -49,6 +50,8 @@ export default class RosterItem {
          chatWindow.openProminently();
       });
 
+      //disable roster menu for contacts
+      /*
       this.element.find('.jsxc-rename').click(function(ev) {
          ev.stopPropagation();
 
@@ -80,6 +83,7 @@ export default class RosterItem {
       });
 
       Menu.init(this.element.find('.jsxc-menu'));
+      */
 
       let avatar = AvatarSet.get(this.contact);
       avatar.addElement(this.element.find('.jsxc-avatar'));
@@ -153,6 +157,8 @@ export default class RosterItem {
       return this.element.detach();
    }
 
+   //disable rename feature
+   /*
    private rename() {
       let self = this;
       let inputElement = $('<input type="text" name="name"/>');
@@ -193,4 +199,5 @@ export default class RosterItem {
       inputElement.remove();
       this.element.find('.jsxc-bar__caption, .jsxc-menu').show();
    }
+   */
 }

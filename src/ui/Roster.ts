@@ -322,7 +322,7 @@ export default class Roster {
             offlineAvailable: true,
             icon: 'help',
          });
-      }*/
+      }
 
       this.addMenuEntry({
          id: 'add-contact',
@@ -330,7 +330,7 @@ export default class Roster {
          label: Translation.t('Add_buddy'),
          icon: 'contact'
       });
-
+*/
       this.addMenuEntry({
          id: 'hide-offline',
          handler: this.toggleOffline,
@@ -394,6 +394,21 @@ export default class Roster {
    private toggleOffline = (ev) => {
       let hideOffline = !Client.getOption(HIDE_OFFLINE_KEY);
 
+      Client.setOption(HIDE_OFFLINE_KEY, hideOffline);
+   }
+
+   private hideOfflineContactsOnInit() {
+
+      //set hide contacts flag
+      let hideOffline = true;
+
+      if (hideOffline) {
+         this.element.addClass('jsxc-hide-offline');
+      } else {
+         this.element.removeClass('jsxc-hide-offline');
+      }
+
+      //save the value
       Client.setOption(HIDE_OFFLINE_KEY, hideOffline);
    }
 
@@ -475,5 +490,8 @@ export default class Roster {
 
       //hide the roster on initialization
       this.hide();
+
+      //hide offline contacts on initialization
+      this.hideOfflineContactsOnInit();
    }
 }

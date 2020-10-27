@@ -1,10 +1,13 @@
 import ChatWindow from '../ui/ChatWindow'
-import Attachment from '../Attachment'
+//import Attachment from '../Attachment'
 
 export default class FileTransferHandler {
-   private handlerElement;
+   //private handlerElement;
 
    constructor(private chatWindow: ChatWindow) {
+      this.chatWindow.getId();
+      //disable file transfer features
+      /*
       this.handlerElement = this.chatWindow.getDom().find('.jsxc-file-transfer');
 
       this.handlerElement.on('click', this.showFileSelection);
@@ -18,8 +21,11 @@ export default class FileTransferHandler {
             this.fileSelected(files[0]);
          }
       });
+      */
    }
 
+   //disable file transfer features
+   /*
    private showFileSelection = (ev) => {
       if (ev.target !== this.handlerElement.get(0)) {
          // prevent bubbled event
@@ -51,4 +57,5 @@ export default class FileTransferHandler {
       let attachment = new Attachment(file);
       this.chatWindow.setAttachment(attachment);
    }
+   */
 }
