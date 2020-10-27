@@ -55,6 +55,9 @@ export default class Connector {
       let timestamp = this.connectionParameters.get('timestamp');
       let isConnectionExpired = inactivity && timestamp && (new Date()).getTime() - timestamp > inactivity;
 
+      //override connection expiry so that connection never expires
+      isConnectionExpired = false;
+
       if (isConnectionExpired) {
          Log.debug(`Inactivity: ${inactivity}, Last timestamp: ${timestamp}, Time diff: ${(new Date()).getTime() - timestamp}`);
          Log.warn('Credentials expired')
