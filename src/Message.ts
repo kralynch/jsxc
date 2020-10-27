@@ -355,17 +355,14 @@ export default class Message implements IIdentifiable, IMessage {
    }
 }
 
-//disable formatting of regular urls to accomodate custom url formatter
-/*
+//modify formatting of regular urls to accomodate custom url formatter
 function convertUrlToLink(text: string) {
- return text;
    return text.replace(CONST.REGEX.URL, function(url) {
       let href = (url.match(/^https?:\/\//i)) ? url : 'http://' + url;
-
       return '<a href="' + href + '" target="_blank" rel="noopener noreferrer">' + url + '</a>';
    });
 }
-*/
+
 
 function convertCustomUrlToLink(text: string) {
    //detect format [[Link Text]]-((http://some.url)) and encode in link
@@ -410,8 +407,7 @@ function replaceLineBreaks(text: string) {
    return text.replace(/(\r\n|\r|\n){2}/g, '</p><p dir="auto">').replace(/(\r\n|\r|\n)/g, '<br/>');
 }
 
-//disable formatting of regular urls to accomodate custom url formatter
-//Message.addFormatter(convertUrlToLink);
+Message.addFormatter(convertUrlToLink);
 Message.addFormatter(convertCustomUrlToLink);
 Message.addFormatter(convertEmailToLink);
 Message.addFormatter(convertGeoToLink);
