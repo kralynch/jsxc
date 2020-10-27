@@ -63,11 +63,13 @@ export default class NotificationPlugin extends AbstractPlugin {
       if (!created || (now.valueOf() - created.valueOf()) < 2 * 60 * 1000) {
          return;
       }
-
+      //disable presence notifications
+      /*
       Notification.notify({
          title: contact.getName(),
          message: Translation.t('has_come_online'),
          source: contact
       });
+      */
    }
 }
