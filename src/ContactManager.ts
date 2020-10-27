@@ -7,6 +7,8 @@ import Utils from '@util/Utils';
 import HookRepository from '@util/HookRepository';
 import Log from '@util/Log';
 import Roster from '@ui/Roster';
+import { SOUNDS } from './CONST'
+import Notification from './Notification'
 
 const EVENT_NEW = 'new';
 const EVENT_REMOVED = 'removed';
@@ -23,6 +25,16 @@ export default class ContactManager {
    constructor(private account: Account) {
       this.registerNewContactHook((contact) => {
          Roster.get().add(contact);
+
+         //if there are unread messages for this contact
+         if(contact.getNumberOfUnreadMessages() > 0 )
+         {
+            //automatically open any unread messages when the contact is added
+            contact.getChatWindowController().openProminently();
+
+            //play notification sound
+            Notification.playSound(SOUNDS.MSG,false,true);
+         }
 
          contact.getChatWindowController();
       });
