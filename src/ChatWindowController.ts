@@ -39,6 +39,16 @@ export default class ChatWindowController {
       chatWindow.focus();
    }
 
+   public hideDecorations()
+   {
+      this.contact.getChatWindow().hideDecorations();
+   }
+
+   public loadMoreMessages(): Boolean
+   {
+      return this.contact.getChatWindow().loadMoreMessages();
+   }
+
    public setBarText(text: string) {
       this.contact.getChatWindow().setBarText(text);
    }

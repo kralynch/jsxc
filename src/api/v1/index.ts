@@ -8,6 +8,7 @@ import Translation from '@util/Translation';
 import loginBox from '@ui/dialogs/loginBox';
 import Account from './Account';
 import LinkHandlerXMPP from '@src/LinkHandlerXMPP'
+import JID from '../../JID'
 
 export { disconnect };
 export { start, startAndPause } from './start'
@@ -25,6 +26,38 @@ export function addMenuEntry(options: { id: string, handler: (ev) => void, label
 
 export function toggleRoster() {
    Roster.get().toggle();
+}
+
+export function openContactWindow(toggleJid: string, hideDecorations: Boolean);
+export function openContactWindow(toggleJid: string){
+
+   //retrieve the chat window of the specified contact
+   let chatWindow = Client.getAccountManager()
+            .getAccounts()
+            .shift()
+            .getContactManager()
+            .getContact(new JID(toggleJid))
+            .getChatWindowController();
+
+   //open it on the screen
+   chatWindow.openProminently();
+
+   //if hide decorations flag is set apply it
+   if( (arguments.length === 2) && ( arguments[1] === true ) )
+   {
+      chatWindow.hideDecorations();
+   }
+}
+
+export function loadMoreMessages(toggleJid: string) {
+   let chatWindow = Client.getAccountManager()
+            .getAccounts()
+            .shift()
+            .getContactManager()
+            .getContact(new JID(toggleJid))
+            .getChatWindowController();
+
+   chatWindow.loadMoreMessages();
 }
 
 export function watchForm(formElement: JQuery, usernameElement: JQuery, passwordElement: JQuery, settingsCallback?: SettingsCallback) {

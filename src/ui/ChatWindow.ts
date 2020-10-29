@@ -90,6 +90,24 @@ export default class ChatWindow {
       return this.contact.getTranscript();
    }
 
+   //allow send area to be hidden for System Chat boxes
+   public hideDecorations()
+   {
+      this.element.find('.jsxc-send-area').remove();
+      this.element.find('.jsxc-avatar').remove();
+      this.element.find('.jsxc-menu-settings').remove();
+   }
+
+   //automatic click on loadmore messages to show most recent messages
+   public loadMoreMessages(): Boolean {
+      if( this.element.find('.jsxc-mam-load-more').children().length > 0 )
+      {
+         this.element.find('.jsxc-mam-load-more').children().first().trigger('click');
+         return true;
+      }
+      return false;
+   }
+
    public getChatWindowMessage(message: IMessage) {
       let id = message.getUid();
 
