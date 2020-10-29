@@ -34,4 +34,8 @@ export default class JSXC {
 
       Object.assign(this, v1);
    }
+
+   public static accountsConnected() : boolean{
+      return Client.accountsConnected();
+   }
 }

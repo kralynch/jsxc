@@ -10,6 +10,7 @@ import ChatWindowList from './ui/ChatWindowList';
 import AccountManager from './AccountManager';
 import Translation from '@util/Translation';
 import Migration from './Migration';
+import { Presence } from './connection/AbstractConnection'
 
 export default class Client {
    private static storage: Storage;
@@ -50,6 +51,11 @@ export default class Client {
       Migration.run(Client.getVersion(), storage);
 
       return Client.accountManager.restoreAccounts();
+   }
+
+   public static accountsConnected(): boolean
+   {
+      return (Client.presenceController.getCurrentPresence() !== Presence.offline );
    }
 
    public static getVersion(): string {

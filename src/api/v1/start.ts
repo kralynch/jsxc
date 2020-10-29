@@ -42,12 +42,6 @@ function startUI() {
 
 async function startWithCredentials(url: string, jid: string, password: string) {
    let account = await Client.getAccountManager().createAccount(url, jid, password.toString());
-
-      //add credential storage here
-      //localStorage.setItem('persistent_url', url);
-      //localStorage.setItem('persistent_jid', url);
-      //localStorage.setItem('persistent_password', url);
-
    return connectAndStartUI(account);
 }
 
